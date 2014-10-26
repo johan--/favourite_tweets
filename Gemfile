@@ -8,11 +8,14 @@ gem 'rails', '4.0.9'
 gem 'pg'
 gem 'twitter'
 
+gem 'bootstrap-sass'
+gem 'will_paginate-bootstrap'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.2'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
-  # gem 'therubyracer', platforms: :ruby
+  gem 'therubyracer', platforms: :ruby
 end
 
 gem 'jquery-rails'
@@ -48,6 +51,9 @@ group :test do
   gem 'simplecov', require: false
   gem 'simplecov-rcov'
   gem 'factory_girl_rails'
+  gem 'ffaker'
+  gem 'database_cleaner'
+
 end
 
 group :development do
