@@ -27,3 +27,7 @@ FavouriteTweets::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 end
+
+# uri = URI.parse('redis://redistogo:3ead024fd5fe6b9657d44c0567c365a4@greeneye.redistogo.com:11255/')
+# Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password, :thread_safe => true)
+Resque.redis = 'localhost:6379'

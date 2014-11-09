@@ -1,0 +1,1 @@
+scheduler: DYNAMIC_SCHEDULE=true bundle exec rake resque:scheduler

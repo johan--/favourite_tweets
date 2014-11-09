@@ -3,4 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+require 'resque/tasks'
 FavouriteTweets::Application.load_tasks

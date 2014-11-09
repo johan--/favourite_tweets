@@ -5,6 +5,9 @@ ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.9'
 
+
+
+
 gem 'pg'
 gem 'twitter'
 
@@ -13,6 +16,8 @@ gem 'twitter-bootstrap-rails'
 
 gem 'will_paginate'
 gem 'will_paginate_twitter_bootstrap'
+
+gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 
 group :assets do
   # gem 'sass-rails', '~> 4.0.2'
@@ -25,6 +30,7 @@ gem 'jquery-rails'
 
 gem 'turbolinks'
 
+gem 'resque'
 gem 'resque-scheduler'
 
 group :doc do
@@ -64,5 +70,5 @@ group :development do
   gem 'binding_of_caller'
 end
 
-# gem 'cron2english'
-# gem 'cronos'
+gem 'cron2english'
+gem 'whenever'

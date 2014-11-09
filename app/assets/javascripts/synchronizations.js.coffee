@@ -1,2 +1,7 @@
 $(document).on 'ready page:load', (event)->
-  $('.bootstrap-timepicker').timepicker
+	$('#timepicker').timepicker({
+		direction: 'bottom',
+		pickDate: false,
+		pickSeconds: false,
+		minuteStep: 1,
+	});

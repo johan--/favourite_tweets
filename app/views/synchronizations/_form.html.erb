@@ -13,12 +13,9 @@
     <% end %>
 
     <div class="actions">
-      Get new tweets at:
-      <div class="input-append bootstrap-timepicker">
-        <input id="timepicker1" type="text" class="input-small">
-        <span class="add-on"><i class="icon-time"></i></span>
-      </div>
-
-      <%= f.submit %>
+      Get new tweets at: </br>
+      <%= f.text_field :run_at, id: 'timepicker' %> <br/>
+      <%= f.submit 'Create', class: 'btn btn-info' %>
+      <%= link_to 'Reset', synchronizations_path, class: 'btn btn-danger' %>
     </div>
 <% end %>

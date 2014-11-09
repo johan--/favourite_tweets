@@ -1,13 +1,9 @@
 class SynchronizationsController < ApplicationController
-  before_action :set_synchronization, only: [:show, :edit, :update, :destroy]
+  before_action :set_synchronization, only: [:show, :destroy]
 
   # GET /synchronizations
   def index
     @synchronizations = Resque.all_schedules || {}
-  end
-
-  # GET /synchronizations/1
-  def show
   end
 
   # GET /synchronizations/new
@@ -21,38 +17,38 @@ class SynchronizationsController < ApplicationController
 
   # POST /synchronizations
   def create
-    @synchronization = Synchronization.new(synchronization_params)
+    run_at = Whenever::Output::Cron.new(1.day, nil, synchronization_params['run_at']).time_in_cron_syntax
 
-    if @synchronization.save
-      redirect_to @synchronization, notice: 'Synchronization was successfully created.'
+    if run_at.present?
+      Resque.set_schedule(
+          SecureRandom.uuid,
+          {class: 'Tweet',
+           cron: run_at,
+           queue: 'tweets',
+           args: 'get_recent_tweets',
+           persist: true
+          }
+      )
+      redirect_to synchronizations_url, notice: 'Synchronization was successfully created.'
     else
       render action: 'new'
     end
   end
 
-  # PATCH/PUT /synchronizations/1
-  def update
-    if @synchronization.update(synchronization_params)
-      redirect_to @synchronization, notice: 'Synchronization was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
-
   # DELETE /synchronizations/1
   def destroy
-    @synchronization.destroy
+    Resque.remove_schedule(params[:id])
     redirect_to synchronizations_url, notice: 'Synchronization was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_synchronization
-      @synchronization = Resque.fetch_schedule(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_synchronization
+    @synchronization = Resque.fetch_schedule(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def synchronization_params
-      params[:synchronization]
-    end
+  # Only allow a trusted parameter "white list" through.
+  def synchronization_params
+    params[:synchronization]
+  end
 end
