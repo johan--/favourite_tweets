@@ -15,13 +15,13 @@ class TweetsController < ApplicationController
 
   # PATCH/PUT /tweets/1
   # PATCH/PUT /tweets/1.json
-  def update
-    if @tweet.update(tweet_params)
-      redirect_to @tweet, notice: 'Tweet was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
+  # def update
+  #   if @tweet.update(tweet_params)
+  #     redirect_to @tweet, notice: 'Tweet was successfully updated.'
+  #   else
+  #     render action: 'edit'
+  #   end
+  # end
 
 # DELETE /tweets/1
 # DELETE /tweets/1.json
@@ -42,8 +42,8 @@ class TweetsController < ApplicationController
   end
 
 # Never trust parameters from the scary internet, only allow the white list through.
-  def tweet_params
-    params.require(:tweet).permit(:message)
-  end
+#   def tweet_params
+#     params.require(:tweet).permit(:message)
+#   end
 
 end

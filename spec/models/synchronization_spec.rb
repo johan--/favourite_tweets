@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Synchronization, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '#is_allowed' do
+    let!(:synchronization) { create(:synchronization) }
+
+    it do
+      expect(Synchronization.is_allowed).to be_falsey
+    end
+
+    it do
+      synchronization.destroy
+      expect(Synchronization.is_allowed).to be_truthy
+    end
+  end
 end

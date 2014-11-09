@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
 # the TweetsHelper. For example:
@@ -11,5 +11,12 @@ require 'spec_helper'
 #   end
 # end
 RSpec.describe TweetsHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '.message' do
+    let(:tweet) { build(:tweet) }
+
+    it 'should return formatted tweet' do
+      expect(message(tweet)).to eq(tweet.message)
+    end
+  end
 end

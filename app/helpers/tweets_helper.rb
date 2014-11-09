@@ -1,6 +1,6 @@
 module TweetsHelper
   def message(tweet)
-    #TODO Add some formating
+    #TODO Add some formatting
     tweet.message
   end
 end

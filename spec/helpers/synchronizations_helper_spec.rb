@@ -11,5 +11,12 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe SynchronizationsHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '.synchronization_time' do
+    let(:synchronization) { {'cron' => '15 1 * * *'} }
+
+    it 'should return correct time' do
+      expect(synchronization_time(synchronization)).to eq('Every day at 1:15am')
+    end
+  end
 end
