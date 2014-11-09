@@ -11,3 +11,10 @@ test:
   username: postgres
   password: postgres
   host: localhost
+
+production:
+  adapter: postgresql
+  database: d58rsbrkm37und
+  username: apyjsunpbmsjpm
+  password: SdZphN1hwh8Seh1Nxzh7yBJwt3
+  host: ec2-54-83-196-7.compute-1.amazonaws.com

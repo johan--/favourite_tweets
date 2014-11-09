@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141026113009) do
+ActiveRecord::Schema.define(version: 20141102093008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20141026113009) do
     t.integer  "tweet_id"
     t.string   "media_type"
     t.text     "media_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "synchronizations", force: true do |t|
+    t.boolean  "is_success", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

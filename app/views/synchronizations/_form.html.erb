@@ -1,0 +1,24 @@
+<%= form_for(@synchronization) do |f| %>
+    <% if @synchronization.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@synchronization.errors.count, "error") %> prohibited this synchronization from being
+            saved:</h2>
+
+          <ul>
+            <% @synchronization.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      Get new tweets at:
+      <div class="input-append bootstrap-timepicker">
+        <input id="timepicker1" type="text" class="input-small">
+        <span class="add-on"><i class="icon-time"></i></span>
+      </div>
+
+      <%= f.submit %>
+    </div>
+<% end %>

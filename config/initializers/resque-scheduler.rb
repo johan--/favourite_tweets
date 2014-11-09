@@ -1,0 +1,1 @@
+Resque::Scheduler.dynamic = true

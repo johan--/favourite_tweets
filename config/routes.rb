@@ -1,5 +1,11 @@
 FavouriteTweets::Application.routes.draw do
-  resources :tweets
+  resources :synchronizations
+
+  resources :tweets do
+    collection do
+      get :get_recent
+    end
+  end
 
   root to: 'tweets#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -4,7 +4,8 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.order(created_at: :desc).paginate(:page => params[:page], :per_page => 10)
+    @tweets = Tweet.order(created_at: :desc).
+        paginate(page: params[:page], per_page: 10)
   end
 
   # GET /tweets/1
@@ -26,6 +27,11 @@ class TweetsController < ApplicationController
 # DELETE /tweets/1.json
   def destroy
     @tweet.destroy
+    redirect_to tweets_url
+  end
+
+  def get_recent
+    Tweet.get_recent_tweets
     redirect_to tweets_url
   end
 

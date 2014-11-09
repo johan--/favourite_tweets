@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1>Setting</h1>
+  <%= link_to 'Create new Synchronization', get_recent_tweets_path, class: 'btn btn-info' %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th width="85%"></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @synchronizations.each_pair do |synchronization_name, synchronization_params| %>
+      <tr>
+        <td><%= synchronization_params %></td>
+        <td>
+          <%#= link_to 'Edit', edit_synchronization_path(synchronization_name), class: 'btn btn-info' %>
+          <%#= link_to 'Destroy', '/synchronizations/' + synchronization_name,
+                      method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

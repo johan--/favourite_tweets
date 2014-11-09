@@ -1,31 +1,30 @@
-<%- model_class = Tweet -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Tweets</h1>
+  <%= link_to 'Get new Tweets', get_recent_tweets_path,
+              class: 'btn btn-info' %>
 </div>
 
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:message) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th width="85%">Tweet</th>
+    <th></th>
+  </tr>
   </thead>
   <tbody>
-    <% @tweets.each do |tweet| %>
+  <% @tweets.each do |tweet| %>
       <tr>
-        <td><%= tweet.message %></td>
+        <td><%= message(tweet) %></td>
         <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      tweet_path(tweet), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      tweet_path(tweet),
-                      :method => :delete,
-                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to t('.show', default: t("helpers.links.show")), tweet_path(tweet),
+                      class: 'btn btn-info' %>
+          <%= link_to t('.destroy', default: t("helpers.links.destroy")),
+                      tweet_path(tweet), method: :delete, class: 'btn btn-danger' %>
         </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<%= will_paginate @tweets, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @tweets %>
 

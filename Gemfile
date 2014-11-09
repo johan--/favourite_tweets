@@ -8,11 +8,14 @@ gem 'rails', '4.0.9'
 gem 'pg'
 gem 'twitter'
 
-gem 'bootstrap-sass'
-gem 'will_paginate-bootstrap'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+
+gem 'will_paginate'
+gem 'will_paginate_twitter_bootstrap'
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.2'
+  # gem 'sass-rails', '~> 4.0.2'
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'therubyracer', platforms: :ruby
@@ -22,7 +25,7 @@ gem 'jquery-rails'
 
 gem 'turbolinks'
 
-gem 'jbuilder', '~> 1.2'
+gem 'resque-scheduler'
 
 group :doc do
   gem 'sdoc', require: false
@@ -60,3 +63,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
+
+# gem 'cron2english'
+# gem 'cronos'
