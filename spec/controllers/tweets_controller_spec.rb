@@ -20,6 +20,20 @@ RSpec.describe TweetsController, :type => :controller do
       get :index
       expect(assigns(:tweets).size).to eq(10)
     end
+
+    context 'should filter by lang' do
+      let!(:tweet) { create(:tweet, lang: 'es') }
+
+      it 'should return only es tweets' do
+        get :index, langs: 'es'
+        expect(assigns(:tweets)).to match_array([tweet])
+      end
+
+      it 'should return only es tweets' do
+        get :index, langs: ['es']
+        expect(assigns(:tweets)).to match_array([tweet])
+      end
+    end
   end
 
   describe 'DELETE #destroy' do

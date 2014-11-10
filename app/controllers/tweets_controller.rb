@@ -1,11 +1,17 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
+  before_action :set_langs, only: [:index]
 
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.order(created_at: :desc).
-        paginate(page: params[:page], per_page: 10)
+    @tweets = Tweet.order(created_at: :desc)
+
+    if params[:langs].present?
+      @tweets = @tweets.where(lang: params[:langs])
+    end
+
+    @tweets = @tweets.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /tweets/1
@@ -39,6 +45,10 @@ class TweetsController < ApplicationController
 # Use callbacks to share common setup or constraints between actions.
   def set_tweet
     @tweet = Tweet.find(params[:id])
+  end
+
+  def set_langs
+    @langs = Tweet.pluck(:lang).uniq.sort
   end
 
 # Never trust parameters from the scary internet, only allow the white list through.

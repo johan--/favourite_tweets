@@ -2,6 +2,12 @@
   <h1>Tweets</h1>
   <%= link_to 'Get new Tweets', get_recent_tweets_path,
               class: 'btn btn-info' %>
+  <hr />
+  <%= form_tag tweets_path(@user), method: 'get', class: 'lang-select' do -%>
+      <%= select_tag :langs, options_for_select(@langs.each { |l| [l, l] }, params[:langs]),
+                     {multiple: true} %>
+      <%= submit_tag 'Search', class: 'btn btn-info'%>
+  <% end -%>
 </div>
 
 <table class="table table-striped">
